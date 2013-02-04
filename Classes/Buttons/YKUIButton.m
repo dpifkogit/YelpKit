@@ -657,6 +657,11 @@
     if (!_secondaryTitle) {
       [title drawInRect:CGRectMake(x, y, titleSize.width, titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
     } else if (_secondaryTitle) {
+      if (_maxLineCount > 0) {
+        CGSize lineSize = [@" " sizeWithFont:_titleFont];
+        titleSize.height = lineSize.height * _maxLineCount;
+      }
+
       CGSize titleSizeAdjusted = [title sizeWithFont:_titleFont constrainedToSize:titleSize lineBreakMode:UILineBreakModeTailTruncation];
       titleSizeAdjusted = [title drawInRect:CGRectMake(x, y, titleSizeAdjusted.width, titleSizeAdjusted.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
       if (_secondaryTitleColor) [_secondaryTitleColor set];
