@@ -658,6 +658,7 @@
       [title drawInRect:CGRectMake(x, y, titleSize.width, titleSize.height) withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:_titleAlignment];
     } else if (_secondaryTitle) {
       if (_maxLineCount > 0) {
+        // NOTE(nakoury): ideally this check would not be done here. instead _titleSize should be broken up into _titleSize and _secondaryTitleSize because currently _titleSize is doing a dual purpose. In some cases it is considered the size of _title + _secondaryTitle, but in this case it is considered just the size of _title. See _sizeForTitle:constrainedToSize for the logic behind _titleSize.
         CGSize lineSize = [@" " sizeWithFont:_titleFont];
         titleSize.height = lineSize.height * _maxLineCount;
       }
