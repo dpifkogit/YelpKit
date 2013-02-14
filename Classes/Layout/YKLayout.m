@@ -180,7 +180,11 @@ static NSMutableDictionary *gDebugStats = NULL;
     if (sizeThatFits.height == 0 && ((options & YKLayoutOptionsSizeToFitDefaultSize) == YKLayoutOptionsSizeToFitDefaultSize)) {
       sizeThatFits.height = frame.size.height;
     }
-    
+
+    if ((options & YKLayoutOptionsFixedWidth) == YKLayoutOptionsFixedWidth) {
+      sizeThatFits.width = frame.size.width;
+    }
+
     // If size that fits returns different width than passed in, it can cause weirdness when sizeToFit is called multiple times in succession.
     // Here we assert the size passed into sizeThatFits returns the same width, unless you explicitly override this behavior.
     // This is because most views are sized based on a width. If you had a view (a button, for example) with a variable width, then you should specify the

@@ -57,13 +57,17 @@ typedef enum {
   // This is useful for an image view that may need to be constrained to a max
   // size, but still maintain its aspect ratio.
   YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio = 1 << 10,
+
+  // Whether width specified will be set as the width. Using this option will
+  // use the specified width regardless of the width returned by sizeThatFits.
+  YKLayoutOptionsFixedWidth = 1 << 11,
 } YKLayoutOptions;
 
 
 /*!
  Informal protocol for views laid out by YKLayout.
  */
-@protocol YKLView 
+@protocol YKLView
 
 @property (assign, nonatomic) CGRect frame;
 
