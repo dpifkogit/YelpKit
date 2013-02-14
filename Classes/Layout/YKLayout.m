@@ -30,7 +30,6 @@
 #import "YKLayout.h"
 #import "YKCGUtils.h"
 #import "YKDefines.h"
-#import "YKUILayoutView.h"
 
 static NSMutableDictionary *gDebugStats = NULL;
 
@@ -101,7 +100,7 @@ static NSMutableDictionary *gDebugStats = NULL;
 #if DEBUG
   NSTimeInterval time = [NSDate timeIntervalSinceReferenceDate];
 #endif
-  CGSize layoutSize = [(id<YKUIViewLayout>)_view layout:self size:size];
+  CGSize layoutSize = [(id<YKLayoutView>)_view layout:self size:size];
 #if DEBUG
   stats->_timing += [NSDate timeIntervalSinceReferenceDate] - time;
   stats->_layoutCount++;
@@ -192,7 +191,8 @@ static NSMutableDictionary *gDebugStats = NULL;
     // This check only applies to YKUIView subclasses.
     if (((options & YKLayoutOptionsVariableWidth) != YKLayoutOptionsVariableWidth)
         && ((options & YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio) != YKLayoutOptionsSizeToFitConstrainSizeMaintainAspectRatio)
-        && sizeThatFits.width != frame.size.width && [view isKindOfClass:[YKUILayoutView class]]) {
+        && ((options & YKLayoutOptionsFixedWidth) != YKLayoutOptionsFixedWidth)
+        && sizeThatFits.width != frame.size.width && [view conformsToProtocol:@protocol(YKLayoutView)]) {
       YKAssert(NO, @"sizeThatFits: returned width different from passed in width. If you have a variable width view, you can pass in the option YKLayoutOptionsVariableWidth to avoid this check.");
     }
     

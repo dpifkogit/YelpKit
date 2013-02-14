@@ -15,7 +15,7 @@ typedef void (^UIControlTargetBlock)();
 
  Also implements YKLayout.
  */
-@interface YKUIControl : UIControl {
+@interface YKUIControl : UIControl <YKLayoutView>{
   id _target; // weak
   SEL _action;
   

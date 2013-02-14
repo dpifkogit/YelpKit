@@ -51,7 +51,7 @@ typedef void (^YKUIViewSubviewNeedsLayoutBlock)(UIView *view, BOOL animated);
  
  
  */
-@interface YKUILayoutView : UIView {
+@interface YKUILayoutView : UIView <YKLayoutView> {
   YKLayout *_layout;
   
   YKUIViewSubviewNeedsLayoutBlock _needsLayoutBlock;

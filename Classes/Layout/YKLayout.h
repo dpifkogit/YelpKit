@@ -63,11 +63,11 @@ typedef enum {
   YKLayoutOptionsFixedWidth = 1 << 11,
 } YKLayoutOptions;
 
-
+@protocol YKLayoutView;
 /*!
  Informal protocol for views laid out by YKLayout.
  */
-@protocol YKLView
+@protocol YKLView <YKLayoutView>
 
 @property (assign, nonatomic) CGRect frame;
 
@@ -214,7 +214,14 @@ typedef enum {
 /*
  UIViews can implement this protocol, to enable custom layouts.
  */
-@protocol YKUIViewLayout <NSObject>
+@protocol YKLayoutView <NSObject>
+
+/*!
+ Layout object belonging to the class implementing this protocol.
+ */
+@property (retain, nonatomic) id <YKLayout>layout;
+
+@optional
 
 /*!
  Layout or size the current view, with the specified size as a hint.
@@ -224,6 +231,8 @@ typedef enum {
  You should never setFrame on subviews in this method. Instead use the methods
  in layout in order to setFrame, and use what those methods return to layout other
  subviews. This is because setFrame calls are no-ops when the view is only sizing.
+
+ This method must be implemented if self.layout is not nil.
 
  @param layout Layout
  @param size Size to layout in
@@ -258,6 +267,7 @@ typedef enum {
 - (void)drawInRect:(CGRect)rect;
 
 @end
+
 
 @class YKLayoutStats;
 
