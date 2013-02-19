@@ -33,6 +33,8 @@
 // A default button height
 #define kButtonHeight 37
 
+@class YKUIImageView;
+
 typedef enum {
   YKUIButtonIconPositionLeft = 0, // Default
   YKUIButtonIconPositionCenter, // Centered
@@ -112,7 +114,7 @@ typedef enum {
   UIColor *_titleShadowColor;
   CGSize _titleShadowOffset;
   
-  UIImageView *_iconImageView;
+  YKUIImageView *_iconImageView;
   CGSize _iconImageSize;
   CGPoint _iconOrigin;
   
@@ -259,7 +261,7 @@ typedef enum {
  Image (view) to display to the left of the text.
  Alternatively, you can set the image.
  */
-@property (retain, nonatomic) UIImageView *iconImageView;
+@property (retain, nonatomic) YKUIImageView *iconImageView;
 
 /*!
  Image to display on the right side of the button.

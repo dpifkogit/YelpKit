@@ -29,6 +29,7 @@
 
 #import "YKUIButton.h"
 #import "YKDefines.h"
+#import "YKUIImageView.h"
 
 
 @implementation YKUIButton
@@ -393,7 +394,9 @@
 
 - (void)setIconImage:(UIImage *)iconImage {
   [_iconImageView release];
-  _iconImageView = [[UIImageView alloc] initWithImage:iconImage];
+  _iconImageView = [[YKUIImageView alloc] initWithImage:iconImage];
+  _iconImageView.contentMode = UIViewContentModeScaleToFill;
+  _iconImageView.backgroundColor = [UIColor clearColor];
 }
 
 - (UIImage *)iconImage {
@@ -620,13 +623,13 @@
           CGPoint iconTop = YKCGPointToCenter(iconSize, size);
           iconTop.x = x;
           iconTop.y += bounds.origin.y + _insets.top;
-          [icon drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
+          [_iconImageView drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           x += iconSize.width;
           break;
         }
         case YKUIButtonIconPositionTop: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, size);
-          [icon drawInRect:CGRectMake(iconTop.x, _insets.top, iconSize.width, iconSize.height)];
+          [_iconImageView drawInRect:CGRectMake(iconTop.x, _insets.top, iconSize.width, iconSize.height)];
           y = _insets.top + iconSize.height + titleInsets.top;
           break;
         }
@@ -634,7 +637,7 @@
           CGPoint iconTop = YKCGPointToCenter(iconSize, CGSizeMake(size.width, size.height - titleSize.height));
           if (_iconOrigin.x != CGFLOAT_MAX) iconTop.x = _iconOrigin.x;
           if (_iconOrigin.y != CGFLOAT_MAX) iconTop.y = _iconOrigin.y;
-          [icon drawInRect:CGRectMake(iconTop.x, iconTop.y + _insets.top, iconSize.width, iconSize.height)];
+          [_iconImageView drawInRect:CGRectMake(iconTop.x, iconTop.y + _insets.top, iconSize.width, iconSize.height)];
           y = iconTop.y + _insets.top + iconSize.height + titleInsets.top;
           break;
         }
@@ -696,7 +699,7 @@
 
   if (showIcon) {
     if (_iconShadowColor) CGContextSetShadowWithColor(context, CGSizeZero, 3.0, _iconShadowColor.CGColor);
-    [icon drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
+    [_iconImageView drawInRect:YKCGRectToCenterInRect(iconSize, bounds)];
     CGContextSetShadowWithColor(context, CGSizeZero, 0.0, NULL);
   }
 }

@@ -209,6 +209,13 @@ typedef void (^YKUIImageViewStatusBlock)(id<YKUIImageView> imageView, YKUIImageV
  Draw image in rect for current graphics context.
 
  @param rect Rect
+ */
+- (void)drawInRect:(CGRect)rect;
+
+/*!
+ Draw image in rect for current graphics context.
+
+ @param rect Rect
  @param contentMode Content mode
  */
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode;
