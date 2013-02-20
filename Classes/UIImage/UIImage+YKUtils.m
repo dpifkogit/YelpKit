@@ -66,11 +66,11 @@
 }
 
 - (UIImage *)yk_imageByRotatingImageUpright {
-  UIGraphicsBeginImageContext(self.size);
+  UIGraphicsBeginImageContextWithOptions(self.size, YES, self.scale);
   CGContextRef context = UIGraphicsGetCurrentContext();
-  
+
   [self drawAtPoint:CGPointZero];
-  
+
   if (self.imageOrientation == UIImageOrientationRight) {
     // Phone is upright
     CGContextRotateCTM (context, -M_PI_2);
@@ -83,8 +83,10 @@
   } else if (self.imageOrientation == UIImageOrientationUp) {
     // Phone is in landscape with the volume buttons facing down
   }
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
 
-  return UIGraphicsGetImageFromCurrentImageContext();
+  return image;
 }
 
 @end
