@@ -57,4 +57,13 @@
  */
 - (UIImage *)resizedImageInSize:(CGSize)size contentMode:(UIViewContentMode)contentMode opaque:(BOOL)opaque;
 
+/*!
+ Returns a UIImage that is rotated based on this image's imageOrientation. This can be used to rotate images so that they display correctly in views that don't respect imageOrientation.
+
+ @result UIImage that has been rotated based on self's imageOrientation.
+ */
+- (UIImage *)yk_imageByRotatingImageUpright;
+
 @end
+
+UIImage *YKRotateImage(UIImage *image, UIImageOrientation imageOrientation);

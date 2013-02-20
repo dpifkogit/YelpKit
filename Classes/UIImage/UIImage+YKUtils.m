@@ -65,4 +65,26 @@
   return resizedImage;
 }
 
+- (UIImage *)yk_imageByRotatingImageUpright {
+  UIGraphicsBeginImageContext(self.size);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  [self drawAtPoint:CGPointZero];
+  
+  if (self.imageOrientation == UIImageOrientationRight) {
+    // Phone is upright
+    CGContextRotateCTM (context, -M_PI_2);
+  } else if (self.imageOrientation == UIImageOrientationLeft) {
+    // Phone is upside down
+    CGContextRotateCTM (context, M_PI_2);
+  } else if (self.imageOrientation == UIImageOrientationDown) {
+    // Phone is in landscape with the volume buttons facing up
+    CGContextRotateCTM (context, M_PI);
+  } else if (self.imageOrientation == UIImageOrientationUp) {
+    // Phone is in landscape with the volume buttons facing down
+  }
+
+  return UIGraphicsGetImageFromCurrentImageContext();
+}
+
 @end
