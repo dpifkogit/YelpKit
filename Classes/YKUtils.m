@@ -52,6 +52,13 @@ NSMutableArray *YKCreateNonRetainingArray(void) {
   return (NSMutableArray*)CFArrayCreateMutable(nil, 0, &callbacks);
 }
 
+NSMutableSet *YKCreateNonRetainingSet(void) {
+  CFSetCallBacks callbacks = kCFTypeSetCallBacks;
+  callbacks.retain = YKRetainNoOp;
+  callbacks.release = YKReleaseNoOp;
+  return (NSMutableSet*)CFSetCreateMutable(nil, 0, &callbacks);
+}
+
 // Based on code snippet from http://stackoverflow.com/questions/787160/programmatically-retrieve-memory-usage-on-iphone
 NSUInteger YKReportMemory(void) {
   struct task_basic_info info;

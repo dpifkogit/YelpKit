@@ -31,7 +31,19 @@ id YKRandomChoice(id object, ...);
 
 id YKRandomChoiceFromArray(NSArray *array);
 
+/*!
+ Creates an NSMutableArray that does not retain its objects.
+
+ @result NSMutableArray
+ */
 NSMutableArray *YKCreateNonRetainingArray();
+
+/*!
+ Creates an NSMutableSet that does not retain its objects.
+
+ @result NSMutableSet
+ */
+NSMutableSet *YKCreateNonRetainingSet();
 
 // Returns the current memory usage in bytes
 NSUInteger YKReportMemory(void);
