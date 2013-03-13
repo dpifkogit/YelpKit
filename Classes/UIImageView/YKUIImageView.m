@@ -334,7 +334,7 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
     color = nil;
   }
 
-  YKCGContextDrawRoundedRectImageWithShadow(context, image.CGImage, image.size, rect, _strokeColor.CGColor, _strokeWidth, cornerRadius, contentMode, color.CGColor, _shadowColor.CGColor, _shadowBlur);
+  YKCGContextDrawRoundedRectImageWithShadowAndTransform(context, image.CGImage, image.size, rect, _strokeColor.CGColor, _strokeWidth, cornerRadius, contentMode, color.CGColor, _shadowColor.CGColor, _shadowBlur, self.transform);
 
   if (_overlayColor) {
     YKCGContextDrawRoundedRect(context, rect, _overlayColor.CGColor, NULL, _strokeWidth, cornerRadius);

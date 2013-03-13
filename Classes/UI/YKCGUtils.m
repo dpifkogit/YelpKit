@@ -30,7 +30,7 @@
 #import "YKCGUtils.h"
 
 void _YKCGContextDrawStyledRect(CGContextRef context, CGRect rect, YKUIBorderStyle style, CGColorRef fillColor, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius);
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur);
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur, CGAffineTransform transform);
 void _horizontalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out, BOOL reverse);
 void _metalEdgeColorBlendFunctionImpl(void *info, const CGFloat *in, CGFloat *out);
 void _horizontalEdgeColorBlendFunction(void *info, const CGFloat *in, CGFloat *out);
@@ -128,22 +128,33 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
   CGContextStrokePath(context);   
 }
 
-void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, 
-                          UIViewContentMode contentMode, CGColorRef backgroundColor) { 
-  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, 0.0, contentMode, backgroundColor, NULL, 0);
+void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, UIViewContentMode contentMode, CGColorRef backgroundColor) {
+  YKCGContextDrawImageWithTransform(context, image, imageSize, rect, strokeColor, strokeWidth, contentMode, backgroundColor, CGAffineTransformIdentity);
+}
+
+void YKCGContextDrawImageWithTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, UIViewContentMode contentMode, CGColorRef backgroundColor, CGAffineTransform transform) {
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, 0.0, contentMode, backgroundColor, NULL, 0, transform);
 }
 
 void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor) {
-  YKCGContextDrawRoundedRectImageWithShadow(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, NULL, 0);
+  YKCGContextDrawRoundedRectImageWithTransform(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, CGAffineTransformIdentity);
+}
+  
+void YKCGContextDrawRoundedRectImageWithTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGAffineTransform transform) {
+  YKCGContextDrawRoundedRectImageWithShadowAndTransform(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, NULL, 0, transform);
 }
 
-void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur) {  
+void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur) {
+  YKCGContextDrawRoundedRectImageWithShadowAndTransform(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, shadowColor, shadowBlur, CGAffineTransformIdentity);
+}
+
+void YKCGContextDrawRoundedRectImageWithShadowAndTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur, CGAffineTransform transform) {
   CGContextSaveGState(context);
-  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, shadowColor, shadowBlur);
+  _YKCGContextDrawImage(context, image, imageSize, rect, strokeColor, strokeWidth, cornerRadius, contentMode, backgroundColor, shadowColor, shadowBlur, transform);
   CGContextRestoreGState(context);
 }
 
-void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur) {
+void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur, CGAffineTransform transform) {
   
   // Clip for rounded corners
   if (cornerRadius > 0) {
@@ -172,7 +183,8 @@ void _YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageS
 
     // Flip coordinate system, otherwise image will be drawn upside down
     CGContextTranslateCTM (context, 0, imageBounds.size.height);
-    CGContextScaleCTM (context, 1.0, -1.0);   
+    CGContextScaleCTM (context, 1.0, -1.0);
+    CGContextConcatCTM(context, transform);
     imageBounds.origin.y *= -1; // Going opposite direction
     CGContextDrawImage(context, imageBounds, image);
     CGContextRestoreGState(context);

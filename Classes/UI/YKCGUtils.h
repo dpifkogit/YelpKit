@@ -116,6 +116,22 @@ void YKCGContextDrawLine(CGContextRef context, CGFloat x, CGFloat y, CGFloat x2,
 void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor);
 
 /*!
+ Draws image inside rounded rect with a transform.
+ 
+ @param context Context
+ @param image Image to draw
+ @param imageSize Image size
+ @param rect Rect to draw
+ @param strokeColor Stroke color
+ @param strokeWidth Stroke size
+ @param cornerRadius Corner radius for rounded rect
+ @param contentMode Content Mode
+ @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used.
+ @param transform The transform you want to apply to the image
+ */
+void YKCGContextDrawRoundedRectImageWithTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGAffineTransform transform);
+
+/*!
  Draws image inside rounded rect with shadow.
  
  @param context Context
@@ -133,6 +149,24 @@ void YKCGContextDrawRoundedRectImage(CGContextRef context, CGImageRef image, CGS
 void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur);
 
 /*!
+ Draws image inside rounded rect with shadow.
+ 
+ @param context Context
+ @param image Image to draw
+ @param imageSize Image size
+ @param rect Rect to draw
+ @param strokeColor Stroke color
+ @param strokeWidth Stroke size
+ @param cornerRadius Corner radius for rounded rect
+ @param contentMode Content Mode
+ @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used.
+ @param shadowColor Shadow color (or NULL)
+ @param shadowBlur Shadow blur amount
+ @param transform The transform you want to apply to the image
+ */
+void YKCGContextDrawRoundedRectImageWithShadowAndTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur, CGAffineTransform transform);
+
+/*!
  Draws image.
  @param context Context
  @param image Image to draw
@@ -144,6 +178,20 @@ void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef 
  @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used. 
  */
 void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, UIViewContentMode contentMode, CGColorRef backgroundColor);
+
+/*!
+ Draws image.
+ @param context Context
+ @param image Image to draw
+ @param imageSize Image size
+ @param rect Rect to draw
+ @param strokeColor Stroke color
+ @param strokeWidth Stroke size
+ @param contentMode Content mode
+ @param backgroundColor If image is smaller than rect (and not scaling image), this background color is used. 
+ @param transform The transform you want to apply to the image
+ */
+void YKCGContextDrawImageWithTransform(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, UIViewContentMode contentMode, CGColorRef backgroundColor, CGAffineTransform transform);
 
 /*!
  Figure out the rectangle to fit 'size' into 'inSize'.
