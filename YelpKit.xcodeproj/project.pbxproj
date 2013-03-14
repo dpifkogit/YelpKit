@@ -147,6 +147,8 @@
 		42DF28201540F53300EA955F /* NSArray+YKValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DF281E1540F53300EA955F /* NSArray+YKValidation.m */; };
 		42DF28231540F6B200EA955F /* YKValidationException.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DF28211540F6B200EA955F /* YKValidationException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42DF28241540F6B200EA955F /* YKValidationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 42DF28221540F6B200EA955F /* YKValidationException.m */; };
+		477B982B16E683F60010BEE6 /* NSDate+YKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B982916E683F60010BEE6 /* NSDate+YKUtils.m */; };
+		477B982C16E683F60010BEE6 /* NSDate+YKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 477B982A16E683F60010BEE6 /* NSDate+YKUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E6DC674156450F400D95455 /* YKImageMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E6DC672156450F400D95455 /* YKImageMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E6DC675156450F400D95455 /* YKImageMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6DC673156450F400D95455 /* YKImageMemoryCache.m */; };
 /* End PBXBuildFile section */
@@ -345,6 +347,8 @@
 		42DF281E1540F53300EA955F /* NSArray+YKValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YKValidation.m"; sourceTree = "<group>"; };
 		42DF28211540F6B200EA955F /* YKValidationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKValidationException.h; sourceTree = "<group>"; };
 		42DF28221540F6B200EA955F /* YKValidationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKValidationException.m; sourceTree = "<group>"; };
+		477B982916E683F60010BEE6 /* NSDate+YKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YKUtils.m"; sourceTree = "<group>"; };
+		477B982A16E683F60010BEE6 /* NSDate+YKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YKUtils.h"; sourceTree = "<group>"; };
 		6E6DC672156450F400D95455 /* YKImageMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKImageMemoryCache.h; sourceTree = "<group>"; };
 		6E6DC673156450F400D95455 /* YKImageMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKImageMemoryCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -449,6 +453,8 @@
 				00559318140B00F6001E9C43 /* UIView */,
 				00F882E31527C92A000FF1AB /* UIActionSheet */,
 				423C14B415C9EB2C0080E08D /* UILabel */,
+				477B982916E683F60010BEE6 /* NSDate+YKUtils.m */,
+				477B982A16E683F60010BEE6 /* NSDate+YKUtils.h */,
 				00924A5C15785341000546DA /* YelpKit.h */,
 				00559324140B00F6001E9C43 /* YKDefines.h */,
 				00559325140B00F6001E9C43 /* YKError.h */,
@@ -807,6 +813,7 @@
 				00C9CC6015A6C4360045CBE7 /* YKSUIView.h in Headers */,
 				00DB568A15BE1D1500E247FA /* YKUIButtonCell.h in Headers */,
 				001E523F161A29AA00D5C211 /* YelpKit-Prefix.pch in Headers */,
+				477B982C16E683F60010BEE6 /* NSDate+YKUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1000,7 @@
 				00C9CC6115A6C4360045CBE7 /* YKSUIView.m in Sources */,
 				00DB568B15BE1D1500E247FA /* YKUIButtonCell.m in Sources */,
 				423C14B815C9EB3F0080E08D /* UILabel+YKUtils.m in Sources */,
+				477B982B16E683F60010BEE6 /* NSDate+YKUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
