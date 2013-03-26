@@ -149,7 +149,7 @@ void YKCGContextDrawRoundedRectImageWithTransform(CGContextRef context, CGImageR
 void YKCGContextDrawRoundedRectImageWithShadow(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, CGFloat cornerRadius, UIViewContentMode contentMode, CGColorRef backgroundColor, CGColorRef shadowColor, CGFloat shadowBlur);
 
 /*!
- Draws image inside rounded rect with shadow.
+ Draws image inside rounded rect with shadow and transform.
  
  @param context Context
  @param image Image to draw
@@ -180,7 +180,7 @@ void YKCGContextDrawRoundedRectImageWithShadowAndTransform(CGContextRef context,
 void YKCGContextDrawImage(CGContextRef context, CGImageRef image, CGSize imageSize, CGRect rect, CGColorRef strokeColor, CGFloat strokeWidth, UIViewContentMode contentMode, CGColorRef backgroundColor);
 
 /*!
- Draws image.
+ Draws image with transform.
  @param context Context
  @param image Image to draw
  @param imageSize Image size
