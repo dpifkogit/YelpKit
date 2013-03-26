@@ -9,21 +9,21 @@
 @interface NSDate (YKUtils)
 
 /*!
- Returns the number of days difference between this date and the passed in date.
+ Returns the number of days delta between this date and the passed in date.
 
  @param date Date to compare to
- @result NSInteger number of days difference (negative means in the past)
+ @result NSInteger number of days delta (negative means in the past)
  */
-- (NSInteger)yk_dayDiff:(NSDate *)date;
+- (NSInteger)yk_dayDelta:(NSDate *)date;
 
 /*!
- Returns the number of days difference between this date and the passed in date.
+ Returns the number of days delta between this date and the passed in date.
 
  @param date Date to compare to
  @param timeZone Time zone
- @result NSInteger number of days difference (negative means in the past)
+ @result NSInteger number of days delta (negative means in the past)
  */
-- (NSInteger)yk_dayDiff:(NSDate *)date timeZone:(NSTimeZone *)timeZone;
+- (NSInteger)yk_dayDelta:(NSDate *)date timeZone:(NSTimeZone *)timeZone;
 
 /*!
  Whether this day is equal to the passed in day.

@@ -10,11 +10,11 @@
 
 @implementation NSDate(YKUtils)
 
-- (NSInteger)yk_dayDiff:(NSDate *)date {
-  return [self yk_dayDiff:date timeZone:nil];
+- (NSInteger)yk_dayDelta:(NSDate *)date {
+  return [self yk_dayDelta:date timeZone:nil];
 }
 
-- (NSInteger)yk_dayDiff:(NSDate *)date timeZone:(NSTimeZone *)timeZone {
+- (NSInteger)yk_dayDelta:(NSDate *)date timeZone:(NSTimeZone *)timeZone {
   NSCalendar *cal = [NSCalendar currentCalendar];
   NSUInteger flags = (NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit);
   NSDate *ourDate = [cal dateFromComponents:[self gh_dateComponentsFromFlags:flags timeZone:timeZone]];
@@ -28,7 +28,7 @@
 }
 
 - (BOOL)yk_isSameDay:(NSDate *)date timeZone:(NSTimeZone *)timeZone{
-  return [self yk_dayDiff:date timeZone:timeZone] == 0;
+  return [self yk_dayDelta:date timeZone:timeZone] == 0;
 }
 
 @end
