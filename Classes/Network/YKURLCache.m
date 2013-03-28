@@ -89,11 +89,11 @@ static NSMutableDictionary *gNamedCaches = NULL;
 }
 
 + (dispatch_queue_t)defaultDispatchQueue {
-  YKAssertMainThread();
+  static dispatch_once_t once;
   static dispatch_queue_t DefaultDispatchQueue = NULL;
-  if (!DefaultDispatchQueue) {
+  dispatch_once(&once, ^{
     DefaultDispatchQueue = dispatch_queue_create("com.YelpKit.YKURLCache.defaultDispatchQueue", 0);
-  }
+  });
   return DefaultDispatchQueue;
 }
 
