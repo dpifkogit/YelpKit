@@ -60,6 +60,11 @@ typedef void (^YKUISwipeViewDidChangeBlock)(YKUISwipeView *swipeView, BOOL swipe
 @property (assign, nonatomic) CGFloat peekWidth;
 
 /*!
+ Whether to peek part of the previous view as well.
+ */
+@property (assign, nonatomic) BOOL peekPrevious;
+
+/*!
  Amount of space in between views.
  */
 @property (assign, nonatomic) UIEdgeInsets insets;

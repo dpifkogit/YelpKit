@@ -87,19 +87,38 @@ currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
     _scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
     
   } else {
+    __block CGFloat x = 0;
     CGFloat width = self.frame.size.width - _insets.left - _insets.right - _peekWidth;
-    CGFloat x = 0;
-    for (UIView *view in _views) {
-      view.frame = CGRectMake(x, _insets.top, width, self.frame.size.height - _insets.top - _insets.bottom);
-      [view setNeedsLayout];
-      x += width + _insets.right;
-    }
+    [_views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger viewIndex, BOOL *stop) {
+      CGFloat viewWidth = width;
 
+      if (_peekPrevious && viewIndex > 0 && viewIndex < _views.count - 1) {
+        // If our swipe view is a sandwich then the two end pieces of toast are squishing the tasty filling views inside. The filling views need to be a bit smaller to peek part of the previous view as well as the next view.
+        viewWidth -= _peekWidth;
+      }
+
+      view.frame = CGRectMake(x, _insets.top, viewWidth, self.frame.size.height - _insets.top - _insets.bottom);
+      [view setNeedsLayout];
+      x += viewWidth + _insets.right;
+    }];
+
+    // ScrollView frame width defines the page width, so it must be view width + separation.
+    CGFloat scrollViewWidth = width + _insets.right;
+
+    // Subtract peekWidth so the last page doesn't leave room to peek a nonexistant view.
+    CGFloat scrollContentWidth = x - _peekWidth;
+
+    if (_peekPrevious) {
+      // Since we are peeking both ways we need to further shrink our content
+      scrollViewWidth -= _peekWidth;
+      scrollContentWidth -= _peekWidth;
+    }
+    
     _scrollView.alwaysBounceHorizontal = YES;
     // ScrollView frame width defines the page width, so it must be view width + separation.
-    _scrollView.frame = CGRectMake(_insets.left, 0, width + _insets.right, self.frame.size.height);
+    _scrollView.frame = CGRectMake(_insets.left, 0, scrollViewWidth, self.frame.size.height);
     // Subtract peekWidth so the last page doesn't leave room to peek a nonexistant view.
-    _scrollView.contentSize = CGSizeMake(x - _peekWidth, self.frame.size.height);
+    _scrollView.contentSize = CGSizeMake(scrollContentWidth, self.frame.size.height);
   }
 }
 
@@ -155,6 +174,15 @@ currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
 
 - (void)currentViewDidChangeSwiped:(BOOL)swiped {
   if (_changeBlock) _changeBlock(self, swiped);
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+  CGSize sizeThatFits = CGSizeMake(size.width, 0);
+  for (UIView *view in _views) {
+    CGSize sizeThatFitsView = [view sizeThatFits:size];
+    sizeThatFits.height = MAX(sizeThatFits.height, sizeThatFitsView.height);
+  }
+  return sizeThatFits;
 }
 
 #pragma mark UIScrollViewDelegate
