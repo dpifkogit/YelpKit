@@ -88,22 +88,15 @@ currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
     
   } else {
     __block CGFloat x = 0;
-    CGFloat width = self.frame.size.width - _insets.left - _insets.right - _peekWidth;
     [_views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger viewIndex, BOOL *stop) {
-      CGFloat viewWidth = width;
-
-      if (_peekPrevious && viewIndex > 0 && viewIndex < _views.count - 1) {
-        // If our swipe view is a sandwich then the two end pieces of toast are squishing the tasty filling views inside. The filling views need to be a bit smaller to peek part of the previous view as well as the next view.
-        viewWidth -= _peekWidth;
-      }
-
+      CGFloat viewWidth = [self _viewWidth:self.frame.size.width forViewIndex:viewIndex];
       view.frame = CGRectMake(x, _insets.top, viewWidth, self.frame.size.height - _insets.top - _insets.bottom);
       [view setNeedsLayout];
       x += viewWidth + _insets.right;
     }];
 
     // ScrollView frame width defines the page width, so it must be view width + separation.
-    CGFloat scrollViewWidth = width + _insets.right;
+    CGFloat scrollViewWidth = [self _usableWidth:self.frame.size.width] + _insets.right;
 
     // Subtract peekWidth so the last page doesn't leave room to peek a nonexistant view.
     CGFloat scrollContentWidth = x - _peekWidth;
@@ -176,12 +169,26 @@ currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
   if (_changeBlock) _changeBlock(self, swiped);
 }
 
-- (CGSize)sizeThatFits:(CGSize)size {
-  CGSize sizeThatFits = CGSizeMake(size.width, 0);
-  for (UIView *view in _views) {
-    CGSize sizeThatFitsView = [view sizeThatFits:size];
-    sizeThatFits.height = MAX(sizeThatFits.height, sizeThatFitsView.height);
+- (CGFloat)_usableWidth:(CGFloat)width {
+  return width - _insets.left - _insets.right - _peekWidth;
+}
+
+- (CGFloat)_viewWidth:(CGFloat)width forViewIndex:(NSUInteger)viewIndex {
+  CGFloat viewWidth = [self _usableWidth:width];
+  if (_peekPrevious && viewIndex > 0 && viewIndex < _views.count - 1) {
+    // If our swipe view is a sandwich then the two end pieces of toast are squishing the tasty filling views inside. The filling views need to be a bit smaller to peek part of the previous view as well as the next view.
+    viewWidth -= _peekWidth;
   }
+  
+  return viewWidth;
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+  __block CGSize sizeThatFits = CGSizeMake(size.width, 0);
+  [_views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger viewIndex, BOOL *stop) {
+    CGSize sizeThatFitsView = [view sizeThatFits:CGSizeMake([self _viewWidth:size.width forViewIndex:viewIndex], size.height)];
+    sizeThatFits.height = MAX(sizeThatFits.height, sizeThatFitsView.height);
+  }];
   return sizeThatFits;
 }
 
