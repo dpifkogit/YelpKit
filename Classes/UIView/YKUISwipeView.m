@@ -45,8 +45,7 @@
 
 @implementation YKUISwipeView
 
-@synthesize peekWidth=_peekWidth, insets=_insets, scrollView=_scrollView, views=_views,
-currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
+@synthesize currentViewDidChangeBlock=_changeBlock;
 
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
@@ -69,7 +68,8 @@ currentViewIndex=_currentViewIndex, currentViewDidChangeBlock=_changeBlock;
 
 - (void)dealloc {
   _scrollView.delegate = nil;
-  Block_release(_changeBlock);
+  [_views release];
+  [_changeBlock release];
   [super dealloc];
 }
 
