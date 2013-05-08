@@ -45,107 +45,25 @@ typedef enum {
   YKUIButtonSecondaryTitlePositionDefault = 0, // Default, next to title
   YKUIButtonSecondaryTitlePositionBottom, // Underneath the title
   YKUIButtonSecondaryTitlePositionRightAlign, // Next to title, right aligned
-  YKUIButtonSecondaryTitlePositionBottomLeftSingle, // Bottom left, single line
+  YKUIButtonSecondaryTitlePositionBottomLeft, // Underneath the title, to the left
 } YKUIButtonSecondaryTitlePosition;
 
 /*!
  Button.
  */
 @interface YKUIButton : YKUIControl {
-
-  NSString *_title;
-  
-  UIColor *_titleColor;
-  UIFont *_titleFont;
-  UITextAlignment _titleAlignment;
   CGSize _titleSize;
-  UIEdgeInsets __titleInsets;
-  
-  UIColor *_color;
-  UIColor *_color2;
-  UIColor *_color3;
-  UIColor *_color4;
-  
-  YKUIShadingType _shadingType;
-  
-  UIImage *_image;
-  UIImage *_highlightedImage;
-  UIImage *_disabledImage;
-
-  UIEdgeInsets _margin;
-  
-  UIColor *_highlightedTitleColor;
-  UIColor *_highlightedTitleShadowColor;
-  CGSize _highlightedTitleShadowOffset;
-
-  UIColor *_highlightedColor;
-  UIColor *_highlightedColor2;
-  YKUIShadingType _highlightedShadingType;
-  UIColor *_highlightedBorderColor;
-  UIColor *_highlightedBorderShadowColor;
-  CGFloat _highlightedBorderShadowBlur;
-  UIImage *_highlightedIconImage;
-  
-  UIColor *_disabledTitleColor;
-  UIColor *_disabledColor;
-  UIColor *_disabledColor2; 
-  UIColor *_disabledBorderColor;
-  YKUIShadingType _disabledShadingType;
-  UIImage *_disabledIconImage;
-  CGFloat _disabledAlpha;
-  UIColor *_disabledTitleShadowColor;
-  
-  UIColor *_selectedTitleColor;
-  UIColor *_selectedColor;
-  UIColor *_selectedColor2;
-  YKUIShadingType _selectedShadingType;
-  UIColor *_selectedBorderShadowColor;
-  CGFloat _selectedBorderShadowBlur;
-  UIImage *_selectedIconImage;
-
-  UIColor *_borderColor;
-  CGFloat _borderWidth;
-  YKUIBorderStyle _borderStyle;
-  CGFloat _cornerRadius;
-  CGFloat _cornerRadiusRatio;
-  UIColor *_borderShadowColor;
-  CGFloat _borderShadowBlur;
-  
-  UIColor *_titleShadowColor;
-  CGSize _titleShadowOffset;
-  
-  YKUIImageView *_iconImageView;
-  CGSize _iconImageSize;
-  CGPoint _iconOrigin;
-  
-  UIImage *_accessoryImage;
-  UIImage *_highlightedAccessoryImage;
-  
-  YKUIButtonIconPosition _iconPosition;
-  UIColor *_iconShadowColor;
+  CGSize _secondaryTitleSize;
+  CGSize _abbreviatedTitleSize;
+  BOOL _useAbbreviatedTitle;
   
   UIActivityIndicatorView *_activityIndicatorView;
-  
-  NSString *_secondaryTitle;
-  UIColor *_secondaryTitleColor;
-  UIFont *_secondaryTitleFont;
-  YKUIButtonSecondaryTitlePosition _secondaryTitlePosition;
-  
-  NSString *_abbreviatedTitle;
-  CGSize _abbreviatedTitleSize;
-  
-  NSInteger _maxLineCount;
-  
-  UIView *_contentView;
-  
-  BOOL _titleHidden;
-  
 }
 
 /*!
  Text for button.
  */
-@property (retain, nonatomic) NSString *title; 
+@property (retain, nonatomic) NSString *title;
 
 /*!
  Text font for button.
@@ -166,7 +84,7 @@ typedef enum {
  Background color for button.
  Can be used with shadingType, color2, color3, color4.
  */
-@property (retain, nonatomic) UIColor *color; 
+@property (retain, nonatomic) UIColor *color;
 
 /*!
  Background (alternate) color for button.
@@ -271,7 +189,7 @@ typedef enum {
 /*!
  Insets for title text.
  */
-@property (assign, nonatomic) UIEdgeInsets titleInsets; 
+@property (assign, nonatomic) UIEdgeInsets titleInsets;
 
 /*!
  Insets (padding).
@@ -293,7 +211,7 @@ typedef enum {
  If set, will use this size instead of the image.size.
  Defaults to CGSizeZero (disabled).
  */
-@property (assign, nonatomic) CGSize iconImageSize; 
+@property (assign, nonatomic) CGSize iconImageSize;
 
 /*!
  Override position for icon.
@@ -485,9 +403,14 @@ typedef enum {
 @property (retain, nonatomic) UIView *contentView;
 
 /*!
- Maximum line count. Default is no max (0).
+ Maximum line count for title. Default is no max (0).
  */
-@property (assign, nonatomic) NSInteger maxLineCount;
+@property (assign, nonatomic) NSInteger titleMaxLineCount;
+
+/*!
+ Maximum line count for secondary title. Default is no max (0).
+ */
+@property (assign, nonatomic) NSInteger secondaryTitleMaxLineCount;
 
 /*!
  Abbreviated title to use if title doesn't fit.
