@@ -45,17 +45,15 @@ typedef enum {
   YKUIButtonSecondaryTitlePositionDefault = 0, // Default, next to title
   YKUIButtonSecondaryTitlePositionBottom, // Underneath the title
   YKUIButtonSecondaryTitlePositionRightAlign, // Next to title, right aligned
-  YKUIButtonSecondaryTitlePositionBottomLeft, // Underneath the title, to the left
 } YKUIButtonSecondaryTitlePosition;
 
 /*!
  Button.
  */
 @interface YKUIButton : YKUIControl {
-  CGSize _titleSize;
+  CGSize _titleSize; // Either the title size or abbreviated title size, depending on size constraints
+  NSString *_displayedTitle; // Either full title or abbreviated title, depending on size constraints
   CGSize _secondaryTitleSize;
-  CGSize _abbreviatedTitleSize;
-  BOOL _useAbbreviatedTitle;
   
   UIActivityIndicatorView *_activityIndicatorView;
 }
@@ -405,7 +403,7 @@ typedef enum {
 /*!
  Maximum line count for title. Default is no max (0).
  */
-@property (assign, nonatomic) NSInteger titleMaxLineCount;
+@property (assign, nonatomic) NSInteger maxLineCount;
 
 /*!
  Maximum line count for secondary title. Default is no max (0).
