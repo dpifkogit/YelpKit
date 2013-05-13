@@ -210,7 +210,8 @@
   
   YKUIButton *button7 = [self button];
   button7.secondaryTitle = @"Secondary text, bottom left align single line, will ellipsis";
-  button7.secondaryTitlePosition = YKUIButtonSecondaryTitlePositionBottomLeftSingle;
+  button7.titleAlignment = UITextAlignmentLeft;
+  button7.secondaryTitlePosition = YKUIButtonSecondaryTitlePositionBottom;
   button7.secondaryTitleFont = [UIFont systemFontOfSize:14];
   button7.secondaryTitleColor = [UIColor grayColor];
   [_listView addView:button7];
