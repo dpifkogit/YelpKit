@@ -647,8 +647,10 @@
       switch (_iconPosition) {
         case YKUIButtonIconPositionLeft: {
           CGPoint iconTop = YKCGPointToCenter(iconSize, size);
-          iconTop.x = x;
-          iconTop.y += bounds.origin.y + _insets.top;
+          if (_iconOrigin.x != CGFLOAT_MAX) iconTop.x = _iconOrigin.x;
+          else iconTop.x = x;
+          if (_iconOrigin.y != CGFLOAT_MAX) iconTop.y = _iconOrigin.y;
+          else iconTop.y += bounds.origin.y + _insets.top;
           [_iconImageView drawInRect:CGRectMake(iconTop.x, iconTop.y, iconSize.width, iconSize.height)];
           x += iconSize.width;
           break;
