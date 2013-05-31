@@ -263,7 +263,7 @@ static NSSet *gSupportedCountries = nil;
   if (gMockCountryCode) return gMockCountryCode;
   NSString *currentCountryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
   if (!gSupportedCountries || [gSupportedCountries containsObject:currentCountryCode]) return currentCountryCode;
-  else return nil;
+  return nil;
 }
 
 + (void)setMockCountryCode:(NSString *)countryCode {
@@ -304,7 +304,7 @@ static NSSet *gSupportedCountries = nil;
 
 + (BOOL)isCountryCode:(NSString *)code {
   NSString *countryCode = [self countryCode];
-  return ([countryCode compare:code options:NSCaseInsensitiveSearch] == NSOrderedSame && countryCode);
+  return (countryCode && [countryCode compare:code options:NSCaseInsensitiveSearch] == NSOrderedSame);
 }
 
 + (NSString *)localizedPath:(NSString *)name ofType:(NSString *)type {
