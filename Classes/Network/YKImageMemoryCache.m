@@ -52,6 +52,11 @@
   return self;
 }
 
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [super dealloc];
+}
+
 + (YKImageMemoryCache *)sharedCache {
   static dispatch_once_t predicate;
   static YKImageMemoryCache *gSharedImageCacheMemory = nil;
