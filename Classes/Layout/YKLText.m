@@ -126,17 +126,9 @@
   }
 
   if (YKCGSizeIsZero(constrainedToSize)) {
-    if (_lineBreakMode == -1) {
-      _sizeThatFits = [_text sizeWithFont:_font];
-    } else {
-      _sizeThatFits = [_text sizeWithFont:_font forWidth:size.width lineBreakMode:_lineBreakMode];
-    }
+    _sizeThatFits = [_text sizeWithFont:_font forWidth:size.width lineBreakMode:_lineBreakMode];
   } else {
-    if (_lineBreakMode == -1) {
-      _sizeThatFits = [_text sizeWithFont:_font constrainedToSize:constrainedToSize];
-    } else {
-      _sizeThatFits = [_text sizeWithFont:_font constrainedToSize:constrainedToSize lineBreakMode:_lineBreakMode];
-    }
+    _sizeThatFits = [_text sizeWithFont:_font constrainedToSize:constrainedToSize lineBreakMode:_lineBreakMode];
   }
   
   if (_imageView) {
@@ -164,12 +156,6 @@
   if (_textAlignment != UITextAlignmentLeft) {
     // TODO: Single line with non-left alignment?
     [_text drawInRect:rect withFont:_font lineBreakMode:_lineBreakMode alignment:_textAlignment];
-  } else if (_lineBreakMode == -1) {
-    if ([self isSingleLine]) {
-      [_text drawAtPoint:rect.origin withFont:_font];
-    } else {
-      [_text drawInRect:rect withFont:_font];
-    }
   } else {
     if ([self isSingleLine]) {
       [_text drawAtPoint:rect.origin forWidth:rect.size.width withFont:_font lineBreakMode:_lineBreakMode];      

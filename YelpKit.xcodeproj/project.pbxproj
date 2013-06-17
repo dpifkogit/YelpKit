@@ -863,7 +863,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YK;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Yelp;
 			};
 			buildConfigurationList = 005592E2140B0085001E9C43 /* Build configuration list for PBXProject "YelpKit" */;
@@ -1047,10 +1047,6 @@
 		005592F0140B0085001E9C43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -1059,6 +1055,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -1067,10 +1064,6 @@
 		005592F1140B0085001E9C43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1084,7 +1077,6 @@
 		005592F3140B0085001E9C43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpKit-Prefix.pch";
@@ -1106,7 +1098,6 @@
 		005592F4140B0085001E9C43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				"GCC_OPTIMIZATION_LEVEL[sdk=iphonesimulator*][arch=*]" = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
