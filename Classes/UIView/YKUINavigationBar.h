@@ -41,18 +41,7 @@ typedef enum {
   YKUINavigationPositionRight = 1,
 } YKUINavigationPosition;
 
-
 @interface YKUINavigationBar : UIView {
-  UIView *_contentView;
-  UIView *_leftButton;
-  UIView *_rightButton;
-  
-  UIColor *_backgroundColor1;
-  UIColor *_backgroundColor2;
-  UIColor *_topBorderColor;
-  UIColor *_bottomBorderColor;
-  CGFloat _borderWidth;
-  
   UILabel *_titleLabel;
   
   CGSize _defaultContentViewSize;
@@ -68,6 +57,12 @@ typedef enum {
 @property (retain, nonatomic) UIColor *bottomBorderColor;
 @property (assign, nonatomic) CGFloat borderWidth;
 
+/*!
+ Amount to inset the top of the views by.
+ 
+ Note that the views are, by default, centered vertically. So, for iOS7, to account for the height of the status bar (20), this has to be set to 10.
+ */
+@property (assign, nonatomic) CGFloat topInset;
 
 /*!
  Set the content view to a UILabel with title.

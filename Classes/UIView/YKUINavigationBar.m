@@ -34,8 +34,6 @@
 
 @implementation YKUINavigationBar
 
-@synthesize leftButton=_leftButton, rightButton=_rightButton, contentView=_contentView, backgroundColor1=_backgroundColor1, backgroundColor2=_backgroundColor2, topBorderColor=_topBorderColor, bottomBorderColor=_bottomBorderColor, borderWidth=_borderWidth;
-
 - (void)sharedInit { 
   _borderWidth = 0.5;
 }
@@ -66,13 +64,13 @@
 - (CGRect)rectForLeftButton:(CGSize)size {
   if (!_leftButton) return CGRectZero;
   CGRect leftCenter = YKCGRectToCenter(_leftButton.frame.size, size);
-  return CGRectMake(5, leftCenter.origin.y, _leftButton.frame.size.width, _leftButton.frame.size.height);
+  return CGRectMake(5, leftCenter.origin.y + self.topInset, _leftButton.frame.size.width, _leftButton.frame.size.height);
 }
 
 - (CGRect)rectForRightButton:(CGSize)size {
   if (!_rightButton) return CGRectZero;
   CGRect rightCenter = YKCGRectToCenter(_rightButton.frame.size, size);
-  return CGRectMake(size.width - _rightButton.frame.size.width - 5, rightCenter.origin.y, _rightButton.frame.size.width, _rightButton.frame.size.height);
+  return CGRectMake(size.width - _rightButton.frame.size.width - 5, rightCenter.origin.y + self.topInset, _rightButton.frame.size.width, _rightButton.frame.size.height);
 }
 
 - (CGRect)rectForContentView:(CGSize)size {
@@ -86,6 +84,7 @@
   if (YKCGSizeIsZero(contentSize)) contentSize = _defaultContentViewSize;
   // Let the content center adjust up a tiny bit
   CGRect contentCenter = YKCGRectToCenter(contentSize, CGSizeMake(size.width, size.height - 1));
+  contentCenter.origin.y += self.topInset;
   
   // If content view width is more than the max, then left align.
   // If the left position of the content will overlap the left button, then also left align.
