@@ -250,6 +250,7 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
 }
 
 - (UIViewContentMode)imageContentMode {
+  if (_imageContentMode == NSIntegerMax) return self.contentMode;
   return _imageContentMode;
 }
 
