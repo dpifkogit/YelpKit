@@ -39,7 +39,7 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
 
 @implementation YKUIImageBaseView
 
-@synthesize image=_image, status=_status, delegate=_delegate, imageLoader=_imageLoader, statusBlock=_statusBlock, renderInBackground=_renderInBackground;
+@synthesize image=_image;
 
 + (void)setDisableRenderInBackground:(BOOL)disableRenderInBackground {
   gYKUIImageViewDisableRenderInBackground = disableRenderInBackground;
@@ -223,8 +223,6 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
 
 @implementation YKUIImageView
 
-@synthesize strokeColor=_strokeColor, strokeWidth=_strokeWidth, cornerRadius=_cornerRadius, cornerRadiusRatio=_cornerRadiusRatio, color=_color, color2=_color2, overlayColor=_overlayColor, imageContentMode=_imageContentMode, shadowColor=_shadowColor, shadowBlur=_shadowBlur;
-
 + (dispatch_queue_t)backgroundRenderQueue {
   static dispatch_queue_t BackgroundRenderQueue = NULL;
   if (!BackgroundRenderQueue) {
@@ -235,7 +233,7 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
 
 - (void)sharedInit {
   [super sharedInit];
-  _imageContentMode = -1;
+  _imageContentMode = NSUIntegerMax;
 }
 
 - (void)dealloc {
@@ -250,7 +248,7 @@ static BOOL gYKUIImageViewDisableRenderInBackground = NO;
 }
 
 - (UIViewContentMode)imageContentMode {
-  if (_imageContentMode == NSIntegerMax) return self.contentMode;
+  if (_imageContentMode == NSUIntegerMax) return self.contentMode;
   return _imageContentMode;
 }
 
