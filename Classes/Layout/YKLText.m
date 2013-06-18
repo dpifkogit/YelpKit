@@ -65,11 +65,11 @@
 }
 
 + (YKLText *)text:(NSString *)text font:(UIFont *)font {
-  return [self text:text font:font textColor:nil lineBreakMode:NSIntegerMax];
+  return [self text:text font:font textColor:nil lineBreakMode:NSUIntegerMax];
 }
 
 + (YKLText *)text:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor {
-  return [self text:text font:font textColor:textColor lineBreakMode:NSIntegerMax];
+  return [self text:text font:font textColor:textColor lineBreakMode:NSUIntegerMax];
 }
 
 + (YKLText *)text:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor lineBreakMode:(UILineBreakMode)lineBreakMode {
