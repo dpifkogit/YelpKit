@@ -5,6 +5,27 @@
 //  Created by Allen Cheung on 6/19/13.
 //  Copyright (c) 2013 Yelp. All rights reserved.
 //
+//  Permission is hereby granted, free of charge, to any person
+//  obtaining a copy of this software and associated documentation
+//  files (the "Software"), to deal in the Software without
+//  restriction, including without limitation the rights to use,
+//  copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following
+//  conditions:
+//
+//  The above copyright notice and this permission notice shall be
+//  included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+//  OTHER DEALINGS IN THE SOFTWARE.
+//
 
 #import "YKViewTestCase.h"
 #import <YelpKit/YelpKit.h>
@@ -61,7 +82,7 @@
   return [button autorelease];
 }
 
-- (YKUIButton *)_testButton1Pressed:(BOOL)pressed {
+- (YKUIButton *)_buttonOnePressed:(BOOL)pressed {
   YKUIButton *button = [self _button];
   button.title = @"Button (icon, accessory, center, wrapping text)";
   button.titleAlignment = NSTextAlignmentCenter;
@@ -73,9 +94,9 @@
   return button;
 }
 
-- (void)testButton1 {
-  [_listView addView:[self _testButton1Pressed:NO]];
-  [_pressedListView addView:[self _testButton1Pressed:YES]];
+- (void)testButtonOne {
+  [_listView addView:[self _buttonOnePressed:NO]];
+  [_pressedListView addView:[self _buttonOnePressed:YES]];
   GHVerifyView(_superView);
 }
 
@@ -122,6 +143,28 @@
 - (void)testInverseButton {
   [_listView addView:[self _inverseButtonPressed:NO]];
   [_pressedListView addView:[self _inverseButtonPressed:YES]];
+  GHVerifyView(_superView);
+}
+
+- (YKUIButton *)_defaultButtonPressed:(BOOL)pressed {
+  YKUIButton *defaultButton = [self _button];
+  defaultButton.titleShadowColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+  defaultButton.titleShadowOffset = CGSizeMake(0, -1);
+  defaultButton.title = @"Default";
+  defaultButton.titleColor = [UIColor colorWithWhite:51.0f/255.0f alpha:1.0];
+  defaultButton.color = [UIColor whiteColor];
+  defaultButton.color2 = [UIColor colorWithWhite:0.9 alpha:1.0];
+  defaultButton.titleColor = [UIColor colorWithWhite:51.0f/255.0f alpha:1.0];
+  defaultButton.borderColor = [UIColor colorWithWhite:184.0f/255.0f alpha:1.0];
+  defaultButton.highlightedColor = [UIColor colorWithWhite:203.0f/255.0f alpha:1.0];
+  defaultButton.highlightedColor2 = [UIColor colorWithWhite:230.0f/255.0f alpha:1.0];
+  defaultButton.selected = pressed;
+  return defaultButton;
+}
+
+- (void)testDefaultButton {
+  [_listView addView:[self _defaultButtonPressed:NO]];
+  [_pressedListView addView:[self _defaultButtonPressed:YES]];
   GHVerifyView(_superView);
 }
 
