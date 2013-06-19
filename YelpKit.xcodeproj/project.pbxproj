@@ -155,11 +155,14 @@
 		84EB1E7D177133FE00479F80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592EB140B0085001E9C43 /* Foundation.framework */; };
 		84EB1E7E177133FE00479F80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D575761457C62A00DE6487 /* CoreGraphics.framework */; };
 		84EB1E84177133FE00479F80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84EB1E82177133FE00479F80 /* InfoPlist.strings */; };
-		84EB1E86177133FE00479F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1E85177133FE00479F80 /* main.m */; };
-		84EB1E8A177133FE00479F80 /* YKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1E89177133FE00479F80 /* YKAppDelegate.m */; };
 		84EB1E8C177133FE00479F80 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB1E8B177133FE00479F80 /* Default.png */; };
 		84EB1E8E177133FE00479F80 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB1E8D177133FE00479F80 /* Default@2x.png */; };
 		84EB1E90177133FE00479F80 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB1E8F177133FE00479F80 /* Default-568h@2x.png */; };
+		84EB1E9C177135E300479F80 /* GHUnitYelpKitTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1E9B177135E300479F80 /* GHUnitYelpKitTestMain.m */; };
+		84EB1EAE1771373600479F80 /* libGHKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 006371F5156D8E9400DEC4B5 /* libGHKit.a */; };
+		84EB1EAF1771374200479F80 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB1EA5177136A600479F80 /* libGHUnitIOSSimulator.a */; };
+		84EB1EB2177137B700479F80 /* YKApplicationTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */; };
+		84EB1EB5177137E100479F80 /* YKUITestApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +207,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 005592E7140B0085001E9C43;
 			remoteInfo = YelpKit;
+		};
+		84EB1EA4177136A600479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0041C5EA13BA7B8A0015FC22;
+			remoteInfo = "GHUnitIOS (Simulator)";
+		};
+		84EB1EA6177136A600479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0041C61313BA7C6C0015FC22;
+			remoteInfo = "GHUnitIOS (Device)";
+		};
+		84EB1EA8177136A600479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0097C4A813BA7FC800D3BEF0;
+			remoteInfo = Tests;
+		};
+		84EB1EAA177136F100479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 006371E8156D8E9400DEC4B5 /* GHKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 00D022D3154DF1EB003BAAC3;
+			remoteInfo = GHKit;
+		};
+		84EB1EAC177136F800479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0041C5E913BA7B8A0015FC22;
+			remoteInfo = "GHUnitIOS (Simulator)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -363,13 +401,16 @@
 		84EB1E7B177133FD00479F80 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EB1E81177133FE00479F80 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		84EB1E83177133FE00479F80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		84EB1E85177133FE00479F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84EB1E87177133FE00479F80 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		84EB1E88177133FE00479F80 /* YKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKAppDelegate.h; sourceTree = "<group>"; };
-		84EB1E89177133FE00479F80 /* YKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKAppDelegate.m; sourceTree = "<group>"; };
 		84EB1E8B177133FE00479F80 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		84EB1E8D177133FE00479F80 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		84EB1E8F177133FE00479F80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		84EB1E9B177135E300479F80 /* GHUnitYelpKitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitYelpKitTestMain.m; sourceTree = "<group>"; };
+		84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GHUnitIOS.xcodeproj; path = "GHUnit/Project-iOS/GHUnitIOS.xcodeproj"; sourceTree = "<group>"; };
+		84EB1EB0177137B600479F80 /* YKApplicationTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKApplicationTestRunner.h; sourceTree = "<group>"; };
+		84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApplicationTestRunner.m; sourceTree = "<group>"; };
+		84EB1EB3177137E100479F80 /* YKUITestApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUITestApplicationDelegate.h; sourceTree = "<group>"; };
+		84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUITestApplicationDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +441,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EB1EAF1771374200479F80 /* libGHUnitIOSSimulator.a in Frameworks */,
+				84EB1EAE1771373600479F80 /* libGHKit.a in Frameworks */,
 				84EB1E7C177133FE00479F80 /* UIKit.framework in Frameworks */,
 				84EB1E7D177133FE00479F80 /* Foundation.framework in Frameworks */,
 				84EB1E7E177133FE00479F80 /* CoreGraphics.framework in Frameworks */,
@@ -586,6 +629,7 @@
 		0055934B140B0102001E9C43 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */,
 				006371E8156D8E9400DEC4B5 /* GHKit.xcodeproj */,
 			);
 			path = Libraries;
@@ -777,8 +821,11 @@
 		84EB1E7F177133FE00479F80 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				84EB1E88177133FE00479F80 /* YKAppDelegate.h */,
-				84EB1E89177133FE00479F80 /* YKAppDelegate.m */,
+				84EB1E9B177135E300479F80 /* GHUnitYelpKitTestMain.m */,
+				84EB1EB0177137B600479F80 /* YKApplicationTestRunner.h */,
+				84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */,
+				84EB1EB3177137E100479F80 /* YKUITestApplicationDelegate.h */,
+				84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */,
 				84EB1E80177133FE00479F80 /* Supporting Files */,
 			);
 			path = Tests;
@@ -789,13 +836,22 @@
 			children = (
 				84EB1E81177133FE00479F80 /* Tests-Info.plist */,
 				84EB1E82177133FE00479F80 /* InfoPlist.strings */,
-				84EB1E85177133FE00479F80 /* main.m */,
 				84EB1E87177133FE00479F80 /* Tests-Prefix.pch */,
 				84EB1E8B177133FE00479F80 /* Default.png */,
 				84EB1E8D177133FE00479F80 /* Default@2x.png */,
 				84EB1E8F177133FE00479F80 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84EB1E9E177136A500479F80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84EB1EA5177136A600479F80 /* libGHUnitIOSSimulator.a */,
+				84EB1EA7177136A600479F80 /* libGHUnitIOSDevice.a */,
+				84EB1EA9177136A600479F80 /* Tests.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -922,6 +978,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				84EB1EAD177136F800479F80 /* PBXTargetDependency */,
+				84EB1EAB177136F100479F80 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -952,6 +1010,10 @@
 				{
 					ProductGroup = 006371E9156D8E9400DEC4B5 /* Products */;
 					ProjectRef = 006371E8156D8E9400DEC4B5 /* GHKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 84EB1E9E177136A500479F80 /* Products */;
+					ProjectRef = 84EB1E9D177136A500479F80 /* GHUnitIOS.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -990,6 +1052,27 @@
 			fileType = wrapper.application;
 			path = GHKitTestsFramework.app;
 			remoteRef = 006371FA156D8E9400DEC4B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84EB1EA5177136A600479F80 /* libGHUnitIOSSimulator.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGHUnitIOSSimulator.a;
+			remoteRef = 84EB1EA4177136A600479F80 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84EB1EA7177136A600479F80 /* libGHUnitIOSDevice.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGHUnitIOSDevice.a;
+			remoteRef = 84EB1EA6177136A600479F80 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84EB1EA9177136A600479F80 /* Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Tests.app;
+			remoteRef = 84EB1EA8177136A600479F80 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1105,8 +1188,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84EB1E86177133FE00479F80 /* main.m in Sources */,
-				84EB1E8A177133FE00479F80 /* YKAppDelegate.m in Sources */,
+				84EB1E9C177135E300479F80 /* GHUnitYelpKitTestMain.m in Sources */,
+				84EB1EB2177137B700479F80 /* YKApplicationTestRunner.m in Sources */,
+				84EB1EB5177137E100479F80 /* YKUITestApplicationDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1206,16 @@
 			isa = PBXTargetDependency;
 			target = 005592E7140B0085001E9C43 /* YelpKit */;
 			targetProxy = 00DB568C15BE213B00E247FA /* PBXContainerItemProxy */;
+		};
+		84EB1EAB177136F100479F80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GHKit;
+			targetProxy = 84EB1EAA177136F100479F80 /* PBXContainerItemProxy */;
+		};
+		84EB1EAD177136F800479F80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "GHUnitIOS (Simulator)";
+			targetProxy = 84EB1EAC177136F800479F80 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1274,7 +1368,6 @@
 		84EB1E91177133FE00479F80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1284,6 +1377,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
@@ -1292,8 +1386,10 @@
 					"$(inherited)",
 				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/GHUnit\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1303,7 +1399,6 @@
 		84EB1E92177133FE00479F80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1313,11 +1408,14 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Libraries\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/GHUnit\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1363,6 +1461,7 @@
 				84EB1E92177133FE00479F80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
