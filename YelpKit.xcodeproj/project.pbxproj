@@ -163,6 +163,9 @@
 		84EB1EAF1771374200479F80 /* libGHUnitIOSSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB1EA5177136A600479F80 /* libGHUnitIOSSimulator.a */; };
 		84EB1EB2177137B700479F80 /* YKApplicationTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */; };
 		84EB1EB5177137E100479F80 /* YKUITestApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */; };
+		84EB1EB81772256100479F80 /* YKViewTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EB71772256000479F80 /* YKViewTestCase.m */; };
+		84EB1EBB177225A000479F80 /* YKUIButtonViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB1EBA1772259F00479F80 /* YKUIButtonViewTest.m */; };
+		84EB1EBF1772266600479F80 /* libYelpKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 005592E8140B0085001E9C43 /* libYelpKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +245,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0041C5E913BA7B8A0015FC22;
 			remoteInfo = "GHUnitIOS (Simulator)";
+		};
+		84EB1EBD1772266200479F80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 005592DF140B0085001E9C43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 005592E7140B0085001E9C43;
+			remoteInfo = YelpKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -411,6 +421,9 @@
 		84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApplicationTestRunner.m; sourceTree = "<group>"; };
 		84EB1EB3177137E100479F80 /* YKUITestApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUITestApplicationDelegate.h; sourceTree = "<group>"; };
 		84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUITestApplicationDelegate.m; sourceTree = "<group>"; };
+		84EB1EB61772256000479F80 /* YKViewTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKViewTestCase.h; sourceTree = "<group>"; };
+		84EB1EB71772256000479F80 /* YKViewTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKViewTestCase.m; sourceTree = "<group>"; };
+		84EB1EBA1772259F00479F80 /* YKUIButtonViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUIButtonViewTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +454,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EB1EBF1772266600479F80 /* libYelpKit.a in Frameworks */,
 				84EB1EAF1771374200479F80 /* libGHUnitIOSSimulator.a in Frameworks */,
 				84EB1EAE1771373600479F80 /* libGHKit.a in Frameworks */,
 				84EB1E7C177133FE00479F80 /* UIKit.framework in Frameworks */,
@@ -826,6 +840,9 @@
 				84EB1EB1177137B600479F80 /* YKApplicationTestRunner.m */,
 				84EB1EB3177137E100479F80 /* YKUITestApplicationDelegate.h */,
 				84EB1EB4177137E100479F80 /* YKUITestApplicationDelegate.m */,
+				84EB1EB61772256000479F80 /* YKViewTestCase.h */,
+				84EB1EB71772256000479F80 /* YKViewTestCase.m */,
+				84EB1EBA1772259F00479F80 /* YKUIButtonViewTest.m */,
 				84EB1E80177133FE00479F80 /* Supporting Files */,
 			);
 			path = Tests;
@@ -978,6 +995,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				84EB1EBE1772266200479F80 /* PBXTargetDependency */,
 				84EB1EAD177136F800479F80 /* PBXTargetDependency */,
 				84EB1EAB177136F100479F80 /* PBXTargetDependency */,
 			);
@@ -1191,6 +1209,8 @@
 				84EB1E9C177135E300479F80 /* GHUnitYelpKitTestMain.m in Sources */,
 				84EB1EB2177137B700479F80 /* YKApplicationTestRunner.m in Sources */,
 				84EB1EB5177137E100479F80 /* YKUITestApplicationDelegate.m in Sources */,
+				84EB1EB81772256100479F80 /* YKViewTestCase.m in Sources */,
+				84EB1EBB177225A000479F80 /* YKUIButtonViewTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,6 +1236,11 @@
 			isa = PBXTargetDependency;
 			name = "GHUnitIOS (Simulator)";
 			targetProxy = 84EB1EAC177136F800479F80 /* PBXContainerItemProxy */;
+		};
+		84EB1EBE1772266200479F80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 005592E7140B0085001E9C43 /* YelpKit */;
+			targetProxy = 84EB1EBD1772266200479F80 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
