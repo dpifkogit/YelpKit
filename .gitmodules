@@ -1,3 +1,6 @@
 [submodule "Libraries/GHKit"]
 	path = Libraries/GHKit
 	url = git://github.com/Yelp/gh-kit.git
+[submodule "Libraries/GHUnit"]
+	path = Libraries/GHUnit
+	url = git@github.com:Yelp/gh-unit.git
