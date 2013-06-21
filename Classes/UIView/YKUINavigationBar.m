@@ -61,6 +61,11 @@
   [super dealloc];
 }
 
+- (void)setTopInset:(CGFloat)topInset {
+  _topInset = topInset;
+  self.frame = YKCGRectSetHeight(self.frame, 44 + (2 * _topInset));
+}
+
 - (CGRect)rectForLeftButton:(CGSize)size {
   if (!_leftButton) return CGRectZero;
   CGRect leftCenter = YKCGRectToCenter(_leftButton.frame.size, size);
